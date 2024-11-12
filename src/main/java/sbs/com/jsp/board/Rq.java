@@ -14,7 +14,6 @@ public class Rq {
     public Rq(HttpServletRequest req, HttpServletResponse resp) {
         this.req = req;
         this.resp = resp;
-
         try {
             req.setCharacterEncoding("UTF-8"); // 들어오는 데이터를 UTF-8로 인식
         } catch (UnsupportedEncodingException e) {
@@ -23,6 +22,7 @@ public class Rq {
         resp.setCharacterEncoding("UTF-8"); // 완성되는 HTML의 인코딩을 UTF-8로 하겠다.
         resp.setContentType("text/html;charset=UTF-8"); // 브라우저에게 우리가 만든 결과물이 UTF-8 이다. 라고 알리는것
     }
+
     public int getIntparam(String paranName, int defaultValue) {
         String value = req.getParameter(paranName);
         if (value == null) {
@@ -36,9 +36,7 @@ public class Rq {
         }
     }
 
-
-
-    public String getparam(String paranName,String defaultValue) {
+    public String getParam(String paranName,String defaultValue) {
         String value = req.getParameter(paranName);
         if (value == null) {
             return defaultValue;

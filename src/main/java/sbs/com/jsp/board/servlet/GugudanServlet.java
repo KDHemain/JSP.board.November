@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import sbs.com.jsp.board.Rq;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet("/gugudan")
 public class GugudanServlet extends HttpServlet {
@@ -22,11 +23,23 @@ public class GugudanServlet extends HttpServlet {
 //        int dan = Integer.parseInt(req.getParameter("dan"));
         int dan = rq.getIntparam("dan",9);
         int limit = rq.getIntparam("limit",9);
-
+        int level = Integer.parseInt(req.getParameter("level"));
         rq.writer("<h1>==%d단==</h1>".formatted(dan));
-
+        resp.getWriter().append("level = %d".formatted(level));
         for(int i =0; i< limit; i++ ) {
-            rq.writer("<div>%d * %d = = %d <div>".formatted(dan, i, dan * i));
+            rq.writer("<div>%d * %d = = %d </div>".formatted(dan, i, dan * i));
         }
+
+        rq.writer("""
+                
+                <style>
+                    .a {
+                    width: 200px;
+                    height: 200px;
+                    background-color: green}
+                </style>
+                
+                """);
+
     }
 }
