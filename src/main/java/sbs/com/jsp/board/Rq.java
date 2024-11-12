@@ -23,8 +23,8 @@ public class Rq {
         resp.setContentType("text/html;charset=UTF-8"); // 브라우저에게 우리가 만든 결과물이 UTF-8 이다. 라고 알리는것
     }
 
-    public int getIntparam(String paranName, int defaultValue) {
-        String value = req.getParameter(paranName);
+    public int getIntparam(String paramName, int defaultValue) {
+        String value = req.getParameter(paramName);
         if (value == null) {
             return defaultValue;
         }
@@ -44,7 +44,7 @@ public class Rq {
         return value;
     }
 
-    public void writer(String str){
+    public void appendBody(String str){
         try {
             resp.getWriter().append(str);
         } catch (IOException e) {
